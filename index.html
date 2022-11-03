@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/resources/normalize.css" />
+    <link rel="stylesheet" href="/resources/style.css" />
+
+    <!-- JS -->
+    <script src="/resources/script.js" defer></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Rock-Paper-Scissors</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Rock-Paper-Scissors</h1>
+    </header>
+
+    <main>
+      <div class="game__container">
+        <img
+          class="game__icon"
+          src="/resources/images/jigsaw.png"
+          alt="Jigsaw puppet"
+        />
+        <h2 class="game__title">Let's play a game</h2>
+        <p class="game__description">First to 5 losses, dies</p>
+
+        <div class="player-cards__container">
+          <div class="card player-card player-card--human">
+            <img
+              src="/resources/images/none.png"
+              alt="Human option"
+              class="card__img player-card__img"
+            />
+            <p class="card__title player-card__info">
+              <span class="player-card__info__name">Human: </span>
+              <span class="player-card__info__score">0</span>
+            </p>
+          </div>
+
+          <div class="card player-card player-card--computer">
+            <img
+              src="/resources/images/none-computer.png"
+              alt="Computer option"
+              class="card__img player-card__img"
+            />
+            <p class="card__title player-card__info">
+              <span class="player-card__info__name">Computer: </span>
+              <span class="player-card__info__score">0</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="player-options">
+          <p class="player-options__title">Choose your weapon!</p>
+
+          <div class="player-options__container">
+            <div class="card player-option">
+              <img
+                src="/resources/images/rock.png"
+                alt="Rock"
+                class="card__img player-option__img"
+              />
+              <p class="card__title player-option__title">Rock</p>
+            </div>
+
+            <div class="card player-option">
+              <img
+                src="/resources/images/paper.png"
+                alt="Paper"
+                class="card__img player-option__img"
+              />
+              <p class="card__title player-option__title">Paper</p>
+            </div>
+
+            <div class="card player-option">
+              <img
+                src="/resources/images/scissors.png"
+                alt="Scissors"
+                class="card__img player-option__img"
+              />
+              <p class="card__title player-option__title">Scissors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Copyright &copy; Alexandru Minculescu 2022</p>
+    </footer>
+  </body>
+</html>
