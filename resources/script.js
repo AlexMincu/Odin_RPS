@@ -130,7 +130,7 @@ function updateEndgameInfo(result) {
             info.innerText = "You're dead"
             break;
         case 1:
-            info.innerText = "You have one more chance to life. Run."
+            info.innerText = "You have one more chance to live. Run."
             break;
         case 2:
             info.innerText = ""
