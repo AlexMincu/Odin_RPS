@@ -53,20 +53,20 @@ function displayComputerChoice(computerChoice) {
 
     switch(computerChoice) {
         case options.ROCK:
-            computerCardImg.src = "/resources/images/rock.png";
+            computerCardImg.src = "./resources/images/rock.png";
             computerCardTitle.innerText = "Rock"
             break;
         case options.PAPER:
-            computerCardImg.src = "/resources/images/paper.png";
+            computerCardImg.src = "./resources/images/paper.png";
             computerCardTitle.innerText = "Paper"
             break;
         case options.SCISSORS:
-            computerCardImg.src = "/resources/images/scissors.png";
+            computerCardImg.src = "./resources/images/scissors.png";
             computerCardTitle.innerText = "Scissors"
             break;
     
         case -1:
-            computerCardImg.src = "/resources/images/none.png";
+            computerCardImg.src = "./resources/images/none.png";
             computerCardTitle.innerText = ""
             break;
 
