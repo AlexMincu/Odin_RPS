@@ -47,76 +47,67 @@ function getGameResult(playerChoice, computerChoice) {
 
 }
 
-function changeChoicesImgs(playerChoice, computerChoice) {
-    const humanCardImg = document.querySelector(".player-card--human").querySelector("img");
-    const computerCardImg = document.querySelector(".player-card--computer").querySelector("img");
-
-    switch(playerChoice) {
-        case options.ROCK:
-            humanCardImg.src = "/resources/images/rock.png";
-            break;
-        case options.PAPER:
-            humanCardImg.src = "/resources/images/paper.png";
-            break;
-        case options.SCISSORS:
-            humanCardImg.src = "/resources/images/scissors.png";
-            break;
-    }
+function displayComputerChoice(computerChoice) {
+    const computerCardImg = document.querySelector(".card--computer").querySelector("img");
+    const computerCardTitle = document.querySelector(".card--computer").querySelector("p");
 
     switch(computerChoice) {
         case options.ROCK:
             computerCardImg.src = "/resources/images/rock.png";
+            computerCardTitle.innerText = "Rock"
             break;
         case options.PAPER:
             computerCardImg.src = "/resources/images/paper.png";
+            computerCardTitle.innerText = "Paper"
             break;
         case options.SCISSORS:
             computerCardImg.src = "/resources/images/scissors.png";
+            computerCardTitle.innerText = "Scissors"
             break;
+    
+        case -1:
+            computerCardImg.src = "/resources/images/none.png";
+            computerCardTitle.innerText = ""
+            break;
+
+        default:
+            console.error("something is wrong");
     }
 }
 
-
-
-const optionBtns = document.querySelectorAll(".player-option");
+const optionBtns = document.querySelectorAll(".card--human");
 
 let gameResult = null;
 
-// ROCK
-optionBtns[0].addEventListener('click', () => {
 
-    const playerChoice = options.ROCK;
-    const computerChoice = getComputerChoice();
+for(let optionIndex = 0; optionIndex < 3; optionIndex++) {
+    optionBtns[optionIndex].addEventListener('click', gameAction)
+}
+
+function gameAction() {
+
+    if(!this.classList.contains("selected")){
+        this.classList.add("selected");
+        const cardsContainer = document.querySelector('.cards-container--human');
+        cardsContainer.classList.add("collapsed");
+
+
+        const playerChoice = Number(this.id);
+
+        const computerChoice = getComputerChoice();
+        displayComputerChoice(computerChoice);
+
+        gameResult = getGameResult(playerChoice, computerChoice);
+        console.log(gameResult);   
+
+    }
+    else {
+        this.classList.remove("selected");
+        const cardsContainer = document.querySelector('.cards-container--human');
+        cardsContainer.classList.remove("collapsed");
+
+        displayComputerChoice(-1);
+    }
     
-    changeChoicesImgs(playerChoice, computerChoice);
-    gameResult = getGameResult(playerChoice, computerChoice);
-
-    console.log(gameResult);    
-})
-
-// PAPER
-optionBtns[1].addEventListener('click', () => {
-
-    const playerChoice = options.PAPER;
-    const computerChoice = getComputerChoice();
     
-    changeChoicesImgs(playerChoice, computerChoice);
-    gameResult = getGameResult(playerChoice, computerChoice);
-
-    console.log(gameResult);   
-
-})
-
-// SCISSORS
-optionBtns[2].addEventListener('click', () => {
-
-    const playerChoice = options.SCISSORS;
-    const computerChoice = getComputerChoice();
-    
-    changeChoicesImgs(playerChoice, computerChoice);
-    gameResult = getGameResult(playerChoice, computerChoice);
-
-    console.log(gameResult);     
-
-})
-
+}
