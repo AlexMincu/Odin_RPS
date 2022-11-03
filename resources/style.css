@@ -94,4 +94,52 @@ footer h1 {
 }
 .collapsed .selected {
   z-index: 10;
+}
+
+.scoreboard {
+  width: 33rem;
+  padding: 0;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #353ea6;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 5px -2px rgba(0, 0, 0, 0.75);
+  margin: 2.5rem 0;
+}
+.scoreboard__players-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  -moz-column-gap: 3rem;
+       column-gap: 3rem;
+}
+.scoreboard__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.scoreboard__player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #5857b3;
+  border-radius: 0.6rem;
+  width: 8rem;
+  height: 5rem;
+}
+.scoreboard__player__score {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.scoreboard__player__name {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
 }/*# sourceMappingURL=style.css.map */

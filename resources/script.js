@@ -100,6 +100,24 @@ function setInfoTexts(result) {
     }
 }
 
+function updateScoreboard(result) {
+    const humanScore = document.querySelector('.scoreboard__player--human').querySelector('.scoreboard__player__score');
+    const computerScore = document.querySelector('.scoreboard__player--computer').querySelector('.scoreboard__player__score');
+
+    switch(result) {
+        case -1:
+            computerScore.innerText = (Number(computerScore.innerText) + 1).toString();
+            break;
+        case 0:
+            break;
+        case 1:
+            humanScore.innerText = (Number(humanScore.innerText) + 1).toString();
+            break;
+        default:
+            console.error("Something is wrong");
+    }
+}
+
 const optionBtns = document.querySelectorAll(".card--human");
 
 let gameResult = null;
@@ -124,6 +142,7 @@ function gameAction() {
 
         gameResult = getGameResult(playerChoice, computerChoice);
         setInfoTexts(gameResult);
+        updateScoreboard(gameResult);
 
         console.log(gameResult);   
 
@@ -135,6 +154,7 @@ function gameAction() {
 
         displayComputerChoice(-1);
         setInfoTexts(2);
+        updateScoreboard(0);
     }
     
     
