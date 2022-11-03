@@ -75,6 +75,31 @@ function displayComputerChoice(computerChoice) {
     }
 }
 
+function setInfoTexts(result) {
+    const textHuman = document.querySelector('.game__title--human');
+    const computerHuman = document.querySelector('.game__title--computer');
+
+    computerHuman.innerText = "VS";
+
+    switch(result) {
+        case -1:
+            textHuman.innerText = "As expected. You lost."
+            break;
+        case 0:
+            textHuman.innerText = "Just a draw. Try again."
+            break;
+        case 1:
+            textHuman.innerText = "Looks like you got lucky. You won."
+            break;
+        case 2:
+            textHuman.innerText = "Choose your weapon!"
+            computerHuman.innerText = "The computer is waiting for you.";
+            break;
+        default:
+            console.error("Something is wrong");
+    }
+}
+
 const optionBtns = document.querySelectorAll(".card--human");
 
 let gameResult = null;
@@ -98,6 +123,8 @@ function gameAction() {
         displayComputerChoice(computerChoice);
 
         gameResult = getGameResult(playerChoice, computerChoice);
+        setInfoTexts(gameResult);
+
         console.log(gameResult);   
 
     }
@@ -107,6 +134,7 @@ function gameAction() {
         cardsContainer.classList.remove("collapsed");
 
         displayComputerChoice(-1);
+        setInfoTexts(2);
     }
     
     
