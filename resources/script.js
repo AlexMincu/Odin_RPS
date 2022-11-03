@@ -8,7 +8,6 @@ function getComputerChoice() {
     return choice = Math.floor((Math.random() * 3))
 }
 
-
 function getGameResult(playerChoice, computerChoice) {
 
     console.log(playerChoice, computerChoice);
