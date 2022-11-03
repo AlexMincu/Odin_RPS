@@ -113,18 +113,31 @@ function updateScoreboard(result) {
         case 1:
             humanScore.innerText = (Number(humanScore.innerText) + 1).toString();
             break;
+        case 2:
+            computerScore.innerText = '0';
+            humanScore.innerText = '0';
+            break;
         default:
             console.error("Something is wrong");
     }
 }
 
-const optionBtns = document.querySelectorAll(".card--human");
+function updateEndgameInfo(result) {
+    const info = document.querySelector('.endgame__info');
 
-let gameResult = null;
-
-
-for(let optionIndex = 0; optionIndex < 3; optionIndex++) {
-    optionBtns[optionIndex].addEventListener('click', gameAction)
+    switch(result) {
+        case -1:
+            info.innerText = "You're dead"
+            break;
+        case 1:
+            info.innerText = "You have one more chance to life. Run."
+            break;
+        case 2:
+            info.innerText = ""
+            break;
+        default:
+            console.error("Something is wrong");
+    }
 }
 
 function gameAction() {
@@ -144,8 +157,17 @@ function gameAction() {
         setInfoTexts(gameResult);
         updateScoreboard(gameResult);
 
-        console.log(gameResult);   
+        const humanScore = document.querySelector('.scoreboard__player--human').querySelector('.scoreboard__player__score');
+        const computerScore = document.querySelector('.scoreboard__player--computer').querySelector('.scoreboard__player__score');
 
+        if(humanScore.innerText == '5' || computerScore.innerText == '5') {
+            const scoreboard = document.querySelector('.scoreboard');
+            const mainContainer = document.querySelector('.game__cards-container');
+            scoreboard.classList.add('final');
+            mainContainer.classList.add('final')
+
+            updateEndgameInfo(gameResult);
+        }
     }
     else {
         this.classList.remove("selected");
@@ -155,7 +177,36 @@ function gameAction() {
         displayComputerChoice(-1);
         setInfoTexts(2);
         updateScoreboard(0);
+        updateEndgameInfo(2);
     }
     
     
 }
+
+const optionBtns = document.querySelectorAll(".card--human");
+
+let gameResult = null;
+
+for(let optionIndex = 0; optionIndex < 3; optionIndex++) {
+    optionBtns[optionIndex].addEventListener('click', gameAction)
+}
+
+document.querySelector('.endgame__btn').addEventListener('click', () => {
+
+    const cardsContainer = document.querySelector('.cards-container--human');
+    const scoreboard = document.querySelector('.scoreboard');
+    const mainContainer = document.querySelector('.game__cards-container');
+    
+    optionBtns.forEach(option => {
+        option.classList.remove("selected");
+    })
+
+    cardsContainer.classList.remove("collapsed");
+
+    displayComputerChoice(-1);
+    setInfoTexts(2);
+    updateScoreboard(2);
+
+    scoreboard.classList.remove('final');
+    mainContainer.classList.remove('final')
+})

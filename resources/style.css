@@ -27,6 +27,7 @@ footer h1 {
   flex-direction: column;
   align-items: center;
   margin: 2rem 0;
+  position: relative;
 }
 
 .game__icon {
@@ -44,6 +45,16 @@ footer h1 {
 .game__description {
   margin: 0;
 }
+.game__cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  position: static;
+  opacity: 1;
+  transition: all 1s ease;
+}
 
 .cards-container--human {
   position: relative;
@@ -58,7 +69,7 @@ footer h1 {
   justify-content: center;
   height: 10rem;
   width: 10rem;
-  background-color: #353ea6;
+  background-color: #2b2e74;
   border-radius: 1rem;
   box-shadow: 4px 4px 5px -2px rgba(0, 0, 0, 0.75);
   transition-property: box-shadow, transform;
@@ -98,16 +109,19 @@ footer h1 {
 
 .scoreboard {
   width: 33rem;
+  height: 15rem;
   padding: 0;
   padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #353ea6;
+  background-color: #2b2e74;
   border-radius: 1rem;
   box-shadow: 4px 4px 5px -2px rgba(0, 0, 0, 0.75);
+  border: 2px solid #6d6d6d;
   margin: 2.5rem 0;
+  transition: all 2s ease;
 }
 .scoreboard__players-container {
   display: flex;
@@ -142,4 +156,57 @@ footer h1 {
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+}
+.scoreboard .endgame {
+  display: block;
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.game__cards-container.final {
+  position: absolute;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+.scoreboard.final {
+  z-index: 100;
+  margin: 2rem 0;
+  height: 25rem;
+  align-items: center;
+  justify-content: start;
+}
+.scoreboard.final .endgame {
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5rem;
+}
+.scoreboard.final .endgame__info {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-align: center;
+}
+.scoreboard.final .endgame__btn {
+  width: 8rem;
+  height: 3rem;
+  background-color: #928bcd;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 8px 8px 5px -2px rgba(0, 0, 0, 0.75);
+  transform: scale(105%);
+  transition: all 100ms ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: #2b2e74;
+  font-weight: 600;
+}
+.scoreboard.final .endgame__btn:active {
+  box-shadow: 4px 4px 5px -2px rgba(0, 0, 0, 0.75);
+  transform: scale(100%);
 }/*# sourceMappingURL=style.css.map */
